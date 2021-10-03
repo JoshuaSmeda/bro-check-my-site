@@ -1,6 +1,13 @@
 import Link from 'next/link';
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
+import { useContext } from 'react'
+import AuthContext from '../stores/authContext'
+
+
+def
+const { user, login, logout } = useContext(AuthContext)
+console.log(user)
 
 const Navbar = () => {
   return (
@@ -33,15 +40,12 @@ const Navbar = () => {
               </a>
             </div>
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              <a href="http://localhost:3000/dashboard/landing" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+              { !user && <a href="http://localhost:3000/dashboard/landing" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                 Dashboard
-              </a>
-              <a
-                href="#"
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-              >
+              </a> }
+              { user && <a href="#" className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                 Sign up
-              </a>
+              </a> }
           </div>
         </div>
       </div>
